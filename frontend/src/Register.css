@@ -1,0 +1,331 @@
+
+/* ENERGY STAR — registro aislado del resto de la aplicación */
+
+.register-screen {
+  --register-green: #39ff14;
+  --register-cyan: #00f5ff;
+
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px 18px;
+  overflow: hidden;
+  color: #f4f7f3;
+  background: #000;
+  font-family: "DM Sans", sans-serif;
+}
+
+.register-screen::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(57, 255, 20, 0.09), transparent 55%),
+    radial-gradient(ellipse at 100% 100%, rgba(0, 245, 255, 0.045), transparent 45%);
+}
+
+.register-screen,
+.register-screen * {
+  box-sizing: border-box;
+}
+
+.register-screen .register-card {
+  position: relative;
+  width: min(100%, 510px);
+  margin: auto;
+  padding: clamp(24px, 5vw, 42px);
+  overflow: hidden;
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #0b0e0a, #050605 72%);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  animation: register-enter 350ms ease both;
+}
+
+.register-screen .register-card::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  content: "";
+  background: linear-gradient(90deg, transparent, #39ff14, #00f5ff, transparent);
+}
+
+.register-screen .register-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 34px;
+  margin: 0 0 26px;
+  padding: 5px 0;
+  border: 0;
+  border-radius: 0;
+  color: #a0a99e;
+  background: transparent;
+  box-shadow: none;
+  font: 500 12px "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.register-screen .register-back:hover {
+  color: #39ff14;
+  background: transparent;
+}
+
+.register-screen .register-heading {
+  margin-bottom: 26px;
+}
+
+.register-screen .register-eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  color: #39ff14;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  line-height: 1.7;
+}
+
+.register-screen .register-heading h1,
+.register-screen .register-message h1 {
+  margin: 0 0 12px;
+  color: #f7faf5;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(27px, 5vw, 35px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+}
+
+.register-screen .register-heading p,
+.register-screen .register-message > p {
+  margin: 0;
+  color: #9ba49a;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.register-screen .register-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.register-screen .register-card form > label:not(.register-terms) {
+  margin: 0 0 8px;
+  color: #d5dcd2;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.register-screen .register-card input:not([type="checkbox"]),
+.register-screen .register-card select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 46px;
+  margin: 0 0 19px;
+  padding: 0 13px;
+  border: 1px solid #282f27;
+  border-radius: 8px;
+  outline: none;
+  color: #f4f7f3;
+  background-color: #090c09;
+  box-shadow: none;
+  font: 400 13px "DM Sans", sans-serif;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.register-screen .register-card input:not([type="checkbox"])::placeholder {
+  color: #626b61;
+}
+
+.register-screen .register-card input:not([type="checkbox"]):focus,
+.register-screen .register-card select:focus {
+  border-color: rgba(57, 255, 20, 0.75);
+  box-shadow: 0 0 0 3px rgba(57, 255, 20, 0.07);
+}
+
+.register-screen .register-card select {
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+.register-screen .register-card select option {
+  color: #f4f7f3;
+  background: #090c09;
+}
+
+.register-screen .register-card .register-terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 0 0 20px;
+  color: #a8b0a6;
+  font-size: 11px;
+  line-height: 1.7;
+  cursor: pointer;
+}
+
+.register-screen .register-card .register-terms input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  border: 1px solid #424b40;
+  border-radius: 4px;
+  background: #090c09;
+  cursor: pointer;
+}
+
+.register-screen .register-card .register-terms input[type="checkbox"]:checked {
+  border-color: #39ff14;
+  background-color: #39ff14;
+  box-shadow: inset 0 0 0 3px #090c09;
+}
+
+.register-screen .register-card .register-terms input[type="checkbox"]:focus-visible {
+  outline: 2px solid #00f5ff;
+  outline-offset: 3px;
+}
+
+.register-screen .register-card button.register-primary {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 49px;
+  margin: 2px 0 0;
+  padding: 12px 18px;
+  border: 1px solid #39ff14;
+  border-radius: 8px;
+  color: #39ff14;
+  background: rgba(57, 255, 20, 0.07);
+  box-shadow: none;
+  font: 700 12px "DM Sans", sans-serif;
+  letter-spacing: 0.55px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.register-screen .register-card button.register-primary:hover {
+  color: #020402;
+  background: #39ff14;
+  box-shadow: 0 0 24px rgba(57, 255, 20, 0.15);
+}
+
+.register-screen .register-card button.register-primary:active {
+  transform: scale(0.99);
+}
+
+.register-screen .register-card button.register-primary:focus-visible,
+.register-screen .register-card .register-back:focus-visible {
+  outline: 2px solid #00f5ff;
+  outline-offset: 4px;
+}
+
+.register-screen .register-notice {
+  margin: 16px 0 0;
+  color: #737d71;
+  font-size: 10px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.register-screen .register-error {
+  margin: 0 0 16px;
+  padding: 11px 12px;
+  border: 1px solid rgba(255, 90, 90, 0.25);
+  border-radius: 7px;
+  color: #ff9292;
+  background: rgba(255, 70, 70, 0.06);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.register-screen .register-message {
+  text-align: center;
+}
+
+.register-screen .register-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 20px;
+  border: 1px solid rgba(57, 255, 20, 0.35);
+  border-radius: 50%;
+  color: #39ff14;
+  background: rgba(57, 255, 20, 0.07);
+  font-size: 22px;
+  line-height: 1;
+}
+
+.register-screen .register-message .register-eyebrow {
+  margin-bottom: 10px;
+}
+
+.register-screen .register-message .register-primary {
+  margin-top: 24px !important;
+}
+
+@keyframes register-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .register-screen {
+    align-items: flex-start;
+    padding: 18px 12px;
+  }
+
+  .register-screen .register-card {
+    padding: 26px 20px;
+    border-radius: 14px;
+  }
+
+  .register-screen .register-heading {
+    margin-bottom: 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .register-screen .register-card {
+    animation: none;
+  }
+
+  .register-screen .register-card * {
+    scroll-behavior: auto;
+    transition: none !important;
+  }
+}
+
+.register-screen .register-card button.register-primary {
+  background: rgb(3, 149, 3) !important;
+  color: rgb(255, 255, 255) !important;
+  border: 3px solid rgb(0, 0, 0) !important;
+}

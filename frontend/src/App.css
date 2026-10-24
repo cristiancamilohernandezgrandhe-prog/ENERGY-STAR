@@ -1,0 +1,508 @@
+/* ENERGY STAR — bienvenida */
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  color: #fff;
+  background: #000;
+}
+
+.energy-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.app-screen {
+  position: relative;
+  z-index: 0;
+  min-height: 100vh;
+  animation: app-enter 420ms ease both;
+}
+
+.app-screen-exiting {
+  animation: app-exit 180ms ease both;
+  pointer-events: none;
+}
+
+.welcome-screen {
+  --green: #39ff14;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: clamp(18px, 4vw, 48px);
+  overflow: hidden;
+  color: #fff;
+  background: transparent;
+}
+
+.welcome-screen::before {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(0, 0, 0, .14),
+    rgba(0, 0, 0, .46) 75%
+  );
+}
+
+.ambient {
+  position: absolute;
+  z-index: -1;
+  width: 220px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: .12;
+  pointer-events: none;
+}
+
+.ambient-one {
+  top: 7%;
+  right: 8%;
+  background: #39ff14;
+  animation: ambient-float 19s ease-in-out infinite alternate;
+}
+
+.ambient-two {
+  bottom: 4%;
+  left: 8%;
+  background: #00f5ff;
+  animation: ambient-float 24s ease-in-out infinite alternate-reverse;
+}
+
+.welcome-card {
+  display: grid;
+  grid-template-columns: minmax(260px, .88fr) minmax(0, 1.12fr);
+  width: min(1080px, 100%);
+  min-height: 590px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 24px;
+  background: rgba(3, 5, 3, .88);
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, .62),
+    0 0 50px rgba(57, 255, 20, .035);
+  backdrop-filter: blur(16px);
+}
+
+.brand-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(25px, 3.5vw, 42px);
+  border-right: 1px solid rgba(57, 255, 20, .15);
+  background: linear-gradient(
+    145deg,
+    rgba(9, 14, 8, .94),
+    rgba(2, 3, 2, .9)
+  );
+}
+
+.brand-panel::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: .18;
+  background-image:
+    linear-gradient(rgba(57, 255, 20, .11) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(57, 255, 20, .11) 1px, transparent 1px);
+  background-size: 38px 38px;
+  mask-image: linear-gradient(135deg, #000, transparent 72%);
+}
+
+.brand-topline,
+.brand-footer,
+.brand-identity {
+  position: relative;
+  z-index: 1;
+}
+
+.brand-topline {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #a6afa4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.35px;
+  line-height: 1.7;
+}
+
+.status-dot {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #39ff14;
+  box-shadow: 0 0 10px rgba(57, 255, 20, .7);
+  animation: status-pulse 3.2s ease-in-out infinite;
+}
+
+.brand-identity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 36px 0;
+}
+
+.energy-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.energy-star-logo {
+  display: block;
+  width: min(100%, 330px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 16px rgba(57, 255, 20, .13));
+}
+
+.brand-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #7b847a;
+  font-size: 10px;
+  letter-spacing: .65px;
+  line-height: 1.7;
+}
+
+.footer-line {
+  flex: 0 0 23px;
+  height: 1px;
+  background: #39ff14;
+  opacity: .75;
+}
+
+.access-panel {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: clamp(28px, 5vw, 64px);
+}
+
+.access-content {
+  width: 100%;
+  max-width: 425px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #39ff14;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.45px;
+  line-height: 1.8;
+}
+
+.access-content h1,
+.access-content h2 {
+  margin: 22px 0 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(38px, 4.4vw, 54px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -2.2px;
+}
+
+.access-content h1 span,
+.access-content h2 span {
+  color: #39ff14;
+  text-shadow: 0 0 28px rgba(57, 255, 20, .12);
+}
+
+.intro {
+  max-width: 390px;
+  margin: 0;
+  color: #b1bab0;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.access-divider {
+  width: 100%;
+  height: 1px;
+  margin: 27px 0 22px;
+  background: linear-gradient(
+    90deg,
+    rgba(57, 255, 20, .45),
+    rgba(255, 255, 255, .04)
+  );
+}
+
+.access-description {
+  margin: 0 0 25px;
+  color: #d1d7d0;
+  font-size: 12px;
+  line-height: 1.85;
+}
+
+.primary-button,
+.secondary-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  min-height: 53px;
+  padding: 0 17px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .65px;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.primary-button {
+  color: #050805;
+  background: #39ff14;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  background: #72ff57;
+  box-shadow: 0 8px 26px rgba(57, 255, 20, .13);
+}
+
+.secondary-button {
+  margin-top: 10px;
+  color: #f5f7f4;
+  border-color: rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .025);
+}
+
+.secondary-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 245, 255, .45);
+  background: rgba(0, 245, 255, .035);
+}
+
+.primary-button:focus-visible,
+.secondary-button:focus-visible {
+  outline: 2px solid #00f5ff;
+  outline-offset: 3px;
+}
+
+.security-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 25px;
+  color: #899287;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.security-note svg {
+  flex: 0 0 18px;
+  color: #39ff14;
+}
+
+.panel-copyright {
+  margin-top: 25px;
+  color: #626a61;
+  font-size: 9px;
+  line-height: 1.8;
+  letter-spacing: .4px;
+}
+
+@keyframes app-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes app-exit {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes ambient-float {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(18px, -16px, 0); }
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .55; }
+}
+
+@media (max-width: 760px) {
+  .welcome-screen {
+    padding: 14px;
+  }
+
+  .welcome-card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    border-radius: 18px;
+  }
+
+  .brand-panel {
+    padding: 22px 24px 19px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(57, 255, 20, .14);
+  }
+
+  .brand-identity {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: 36px 0;
+}
+
+  .energy-star-logo {
+    width: min(100%, 300px);
+  }
+
+  .brand-footer {
+    font-size: 9px;
+  }
+
+  .access-panel {
+    padding: 30px 24px 28px;
+  }
+
+  .access-content h1,
+  .access-content h2 {
+    margin-top: 17px;
+    font-size: clamp(36px, 10vw, 43px);
+  }
+
+  .intro {
+    font-size: 13px;
+  }
+
+  .access-divider {
+    margin: 22px 0 18px;
+  }
+
+  .security-note {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-panel {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .access-panel {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .access-content h1,
+  .access-content h2 {
+    font-size: 34px;
+    letter-spacing: -1.5px;
+  }
+
+  .primary-button,
+  .secondary-button {
+    padding: 0 13px;
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-screen,
+  .status-dot,
+  .ambient {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+/* Pantalla de carga tras iniciar sesión */
+.energy-loading,
+.signed-in-screen {
+  --green: #39ff14;
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+  color: #f5f8f3;
+  background: radial-gradient(ellipse at 50% 48%, #101a0d 0%, #050705 45%, #000 78%);
+  font-family: "DM Sans", sans-serif;
+}
+.loading-glow {
+  position: absolute;
+  z-index: -1;
+  width: min(60vw, 520px);
+  aspect-ratio: 1;
+  border: 1px solid rgba(57, 255, 20, .12);
+  border-radius: 50%;
+  box-shadow: 0 0 100px rgba(57, 255, 20, .07), inset 0 0 80px rgba(57, 255, 20, .04);
+  animation: loading-orbit 8s linear infinite;
+}
+.loading-glow-two { width: min(42vw, 360px); animation-direction: reverse; animation-duration: 11s; }
+.loading-content { width: min(100%, 560px); text-align: center; animation: loading-appear .7s ease both; }
+.loading-logo { display: block; width: min(58vw, 270px); height: auto; margin: 0 auto 19px; filter: drop-shadow(0 0 16px rgba(57,255,20,.28)); animation: loading-pulse 1.8s ease-in-out infinite; }
+.loading-kicker, .signed-in-eyebrow { color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: 2.2px; }
+.loading-content h1 { margin: 12px 0 27px; font-family: "Space Grotesk", sans-serif; font-size: clamp(31px, 6vw, 54px); font-weight: 500; letter-spacing: -2px; }
+.loading-content h1 span, .signed-in-card h1 span { color: var(--green); }
+.loading-progress { width: min(260px, 75%); height: 3px; margin: 0 auto 19px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.1); }
+.loading-progress span { display: block; width: 38%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, transparent, var(--green), #a1ff91); box-shadow: 0 0 12px var(--green); animation: loading-track 1.25s ease-in-out infinite; }
+.loading-phrase-window { height: 28px; overflow: hidden; }
+.loading-phrase { margin: 0; color: #aab5a7; font-size: 14px; line-height: 28px; }
+.loading-phrase.is-entering { animation: phrase-enter .38s ease both; }
+.loading-phrase.is-leaving { animation: phrase-leave .38s ease both; }
+.signed-in-card { width: min(100%, 520px); padding: clamp(30px, 7vw, 58px); border: 1px solid rgba(57,255,20,.2); border-radius: 20px; background: linear-gradient(145deg, rgba(14,19,13,.96), rgba(4,6,4,.96)); text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,.5); }
+.signed-in-card .energy-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.signed-in-card h1 { font-family: "Space Grotesk", sans-serif; font-size: clamp(27px, 5vw, 38px); }
+.signed-in-card p { margin-bottom: 28px; color: #aab5a7; line-height: 1.7; }
+.signed-in-card .primary-button { margin: auto; }
+@keyframes loading-appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes loading-pulse { 50% { transform: scale(1.06); filter: drop-shadow(0 0 26px rgba(57,255,20,.6)); } }
+@keyframes loading-track { from { transform: translateX(-120%); } to { transform: translateX(280%); } }
+@keyframes loading-orbit { to { transform: rotate(360deg); } }
+@keyframes phrase-enter { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+@keyframes phrase-leave { to { opacity: 0; transform: translateY(-100%); } }
+@media (prefers-reduced-motion: reduce) { .energy-loading *, .energy-loading *::before { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+
+
+

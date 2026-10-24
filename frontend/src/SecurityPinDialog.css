@@ -1,0 +1,17 @@
+.security-pin-overlay { position: fixed; inset: 0; z-index: 3000; display: grid; place-items: center; padding: 20px; background: rgba(3, 8, 5, .72); backdrop-filter: blur(8px); animation: pin-overlay-in .18s ease both; }
+.security-pin-dialog { display: grid; width: min(410px, 100%); gap: 12px; padding: 27px; border: 1px solid rgba(57,255,20,.25); border-radius: 20px; color: #f0f5ef; background: linear-gradient(145deg,#151d17,#0b100c); box-shadow: 0 24px 90px #0009, 0 0 36px #39ff1412; animation: pin-dialog-in .24s cubic-bezier(.2,.8,.2,1) both; }
+.security-pin-icon { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 13px; color: #162713; background: #39ff14; font-size: 22px; }
+.security-pin-eyebrow { color: #9aae9b; font: 700 9px "DM Sans",sans-serif; letter-spacing: .14em; }
+.security-pin-dialog h2 { margin: 0; font: 700 22px "Space Grotesk",sans-serif; }
+.security-pin-dialog p { margin: 0 0 3px; color: #aeb9b0; font: 400 12px/1.6 "DM Sans",sans-serif; }
+.security-pin-dialog label { display: grid; gap: 6px; color: #dce7dd; font: 600 11px "DM Sans",sans-serif; }
+.security-pin-dialog input { width: 100%; min-height: 46px; border: 1px solid #36463a; border-radius: 10px; outline: none; padding: 10px 13px; color: #f6fff5; background: #090e0a; font: 700 19px "DM Sans",sans-serif; letter-spacing: .35em; text-align: center; }
+.security-pin-dialog input:focus { border-color: #39ff14; box-shadow: 0 0 0 3px #39ff1418; }
+.security-pin-error { color: #ff9b9b; font: 500 11px "DM Sans",sans-serif; }
+.security-pin-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 5px; }
+.security-pin-actions button { min-height: 39px; padding: 0 15px; border: 1px solid #36463a; border-radius: 9px; color: #dce7dd; background: #151d17; font: 700 11px "DM Sans",sans-serif; cursor: pointer; }
+.security-pin-actions button:last-child { border-color: #39ff14; color: #11200f; background: #39ff14; }
+.security-pin-actions button:disabled { opacity: .5; cursor: not-allowed; }
+@keyframes pin-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pin-dialog-in { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .security-pin-overlay,.security-pin-dialog { animation: none; } }
